@@ -14,7 +14,7 @@ $Accounts = Import-Csv -Path ".\AccountData.csv"
 Foreach ($Account in $Accounts) {
     $CommandString = "TFSConfig identities /change /fromdomain:$($Account.FromDomain) /todomain:$($Account.ToDomain) /account:$($Account.Account) /toaccount:$($Account.ToAccount)" 
     Write-Host "Executing: ""$($CommandString)"" " -ForegroundColor Cyan
-    & $CommandString
+    Invoke-Expression $CommandString
 }
 
 Write-Host "Done!" -ForegroundColor Green
